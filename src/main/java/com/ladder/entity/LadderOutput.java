@@ -1,4 +1,4 @@
-package ladder.entity;
+package com.ladder.entity;
 
 import java.util.ArrayList;
 import java.util.List;

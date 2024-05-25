@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.ladder'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+}
+
+test {
+    useJUnitPlatform()
+}

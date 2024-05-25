@@ -1,4 +1,4 @@
-package ladder.entity;
+package com.ladder.entity;
 
 public class Person {
     private int personNo;

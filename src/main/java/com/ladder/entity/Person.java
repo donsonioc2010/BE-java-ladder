@@ -1,23 +1,40 @@
 package com.ladder.entity;
 
+import com.ladder.utils.StringUtils;
+
+import java.util.List;
+
 public class Person {
-    private int personNo;
-    private boolean isLast = Boolean.FALSE;
+    private final List<String> persons;
 
-    public Person(int personNo) {
-        this.personNo = personNo;
+    private Person(List<String> persons) {
+        this.persons = persons;
     }
 
-    public Person(int personNo, boolean isLast) {
-        this.personNo = personNo;
-        this.isLast = isLast;
+    public static Person of(String inputPersonNames) {
+        List<String> nameList = StringUtils.parseStringToList(inputPersonNames);
+
+        return new Person(nameList);
     }
 
-    public int getPersonNo() {
-        return personNo;
+    public List<String> getPersons() {
+        return persons;
     }
 
-    public boolean isLast() {
-        return isLast;
+    public int getPersonSize() {
+        return persons.size();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        persons.forEach(person ->
+            sb.append(StringUtils.getFixString(person))
+                .append(" ")
+        );
+        sb.append("\n");
+
+        return sb.toString();
     }
 }

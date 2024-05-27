@@ -1,5 +1,6 @@
 package com.ladder.entity;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LadderInput {
@@ -25,7 +26,20 @@ public class LadderInput {
 
     private static int getLadderHeight(Scanner scanner) {
         System.out.println("최대 사다리 높이는 몇개인가요?");
-        return scanner.nextInt();
+
+        int heightInput;
+        try {
+            heightInput = scanner.nextInt();
+
+            if (heightInput > 0) {
+                return heightInput;
+            }
+            throw new IllegalArgumentException("0보다 큰 숫자를 입력해야 합니다.");
+        } catch (InputMismatchException e) {
+            // nextInt에서 NumberFormatException이 터지긴하는데,
+            // 메세지만 담아서 InputMismatchException로 변환하기 때문에 잡으로면 Mismatch를 사용해야함
+            throw new IllegalArgumentException("숫자를 입력하셔야죠 고객님...");
+        }
     }
 
     public String getPersonNames() {
